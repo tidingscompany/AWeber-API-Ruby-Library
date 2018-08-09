@@ -82,7 +82,7 @@ module AWeber
         self[resource.id] = resource
       else
         if response
-            raise CreationError, JSON.parse(response.body)['error']['message'], caller
+          raise CreationError, JSON.parse(response.body)['error'].try('message'), caller
         else
             raise CreationError, "No response received", caller
         end
