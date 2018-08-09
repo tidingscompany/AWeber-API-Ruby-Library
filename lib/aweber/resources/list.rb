@@ -30,8 +30,8 @@ module AWeber
       def broadcasts
         return @broadcasts if @broadcasts
 
-        @broadcasts = AWeber::Collection.new(client, Campaign, :parent => self)
-        @broadcasts.entries = Hash[campaigns.select { |id, c| c.is_broadcast? }]
+        @broadcasts = AWeber::Collection.new(client, Broadcast, :parent => self)
+        @broadcasts.entries = Hash[broadcasts.select { |id, c| c.is_broadcast? }]
         @broadcasts
       end
       
