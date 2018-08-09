@@ -28,6 +28,11 @@ module AWeber
 
       alias_attribute :is_archived?, :is_archived
       alias_attribute :is_click_tracking_enabled?, :click_tracking_enabled
+
+      def is_broadcast?
+        campaign_type == "b"
+      end
+
     end
   end
 end

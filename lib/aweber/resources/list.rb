@@ -16,6 +16,7 @@ module AWeber
       api_attr :custom_fields_collection_link
       
       has_many :campaigns
+      has_many :broadcasts
       has_many :custom_fields
       has_many :subscribers
       has_many :web_forms
@@ -31,7 +32,8 @@ module AWeber
         return @broadcasts if @broadcasts
 
         @broadcasts = AWeber::Collection.new(client, Broadcast, :parent => self)
-        @broadcasts.entries = Hash[broadcasts.select { |id, c| c.is_broadcast? }]
+        # @broadcasts.entries = Hash[broadcasts.select { |id, c| c.is_broadcast? }]
+        @broadcasts.entries = broadcasts
         @broadcasts
       end
       
