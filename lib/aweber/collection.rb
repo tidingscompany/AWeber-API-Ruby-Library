@@ -75,7 +75,7 @@ module AWeber
 
       response = client.post(path, params)
 
-      if response.is_a? Net::HTTPCreated
+      if response.is_a? Net::HTTPOK
         resource = get(response["location"]).merge(:parent => self)
         resource = @klass.new(client, resource)
 
